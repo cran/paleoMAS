@@ -1,0 +1,40 @@
+\name{simulat}
+\alias{simulat}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{ Samples simulation }
+\description{
+ This function simulates new samples based on known percentages 
+}
+\usage{
+simulat(x, pop = 10000, nsamples = 10, ssample = 300)
+}
+
+\arguments{
+  \item{x}{ Relative frequencies of species. It should correspond to a row in a matrix where species are in columns and samples in rows. }
+  \item{pop}{ Size of the population to be simulated. }
+  \item{nsamples}{ Number of samples to be drawn. }
+  \item{ssample}{ Sample size. }
+}
+\details{
+  A population of size \code{pop} and relative frequencies \code{x} is simulated, and randomly sampled to produce \code{nsamples} new samples. This procedure assumes that the percentages containd in \code{x} represent the real population.
+}
+\value{
+Returns a matrix \code{samples} that contains simultaed samples in rows and sepcies in columns.
+  
+}
+
+\author{ Alexander Correa-Metrio, Kenneth R. Cabrera}
+
+\references{ Correa-Metrio, A., K.R. Cabrera, and M.B. Bush. In review. Submitted. Deriving millenial-scale moisture availability curves from pollen data: an example from the Peruvian Amazon. Journal of Vegetation Science.	
+}
+
+
+
+\examples{
+# data from lake Quexil (Leyden et al 1994)
+data(quexilper)
+simulat(quexilper[1,])
+}
+
+\keyword{manip}
+\keyword{datagen}
