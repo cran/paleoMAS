@@ -16,7 +16,7 @@ vcrossv.da(x, f, fold, nsimulat, funct)
 
 }
   \item{f}{
-An oject of class \code{factor} containing the discriminant factor (See Venables & Ripley (2002) for details on discriminant analysis).
+An object of class \code{factor} containing the discriminant factor (See Venables & Ripley (2002) for details on discriminant analysis).
 }
   \item{fold}{
 Value of v, i.e. number of elements to be left out in each validation. 
@@ -28,10 +28,11 @@ Value of v, i.e. number of elements to be left out in each validation.
 }
 }
 \details{
-The function was designed for discrimination of pollen taxa into dichotomous ecological groups (only admits two factors). The prior information corresponds to the affinity of certain taxa to known environmental conditions. Therefore, while the taxa corrrespond to the objects to classify, the percentages through the fossil dataset correspond to the attributes. Each time the discriminant function is adjusted, v elements are left out with no replacements. Therefore, it is recomendable that v is smaller than half of the total taxa, unless there is a considerble number of species. Take also into consideration that each time a taxon is left out for the crossvalidation, all the samples that were simulated for such taxon are left out too.
+The function was designed for discrimination of pollen taxa into dichotomous ecological groups (only admits two factors). The prior information corresponds to the affinity of certain taxa to known environmental conditions. Therefore, while the taxa corrrespond to the objects to classify, the percentages through the fossil dataset correspond to the attributes. Each time the discriminant function is adjusted, v elements are left out with no replacements. Therefore, it is recommended that v be smaller than half of the total taxa, unless there is a considerable number of species. Take also into consideration that each time a taxon is left out for the crossvalidation, all the samples that were simulated for such taxon are left out too.
 }
 \value{
-  \item{posterior}{The a posteriori probability of each taxa belonging to each one of the defined groups.}
+A list containing:
+  \item{posterior}{The \emph{a posteriori} probability of each taxa belonging to each one of the defined groups.}
   \item{comp2 }{Binary classification of the taxa.}
   \item{accuracy}{The percentage of cases well classified in the cross-validation.}
 }
@@ -41,9 +42,10 @@ Alexander Correa-Metrio, Kenneth R. Cabrera.
 }
 
 
-\references{Correa-Metrio, A., K.R. Cabrera, and M.B. Bush. In Review. Deriving millenial-scale moisture availability curves from pollen data: an example from the Peruvian Amazon. Journal of Vegetation Science.
+\references{
+Correa-Metrio, A., K.R. Cabrera, and M.B. Bush. 2010. Quantifying ecological change through discriminant analysis: a paleoecological example from the Peruvian Amazon. \emph{Journal of Vegetation Science} 21: 695-704.
 
-Venables, W.N., and B.D. Ripley. 2002. "Modern applied statistics with S". Springer, New york.
+Venables, W.N., and B.D. Ripley. 2002. "Modern applied statistics with S". Springer, New York.
 }
 
 
@@ -56,7 +58,8 @@ data(quexilper)
 # Taking only a fraction of the data base so the model is not saturated
 a<-quexilper[1:10,1:20]
 a<-t(a)
-#build a dummy factor assuming that the first 10 species belong to group1 and the send ten belong to group 2
+# build a dummy factor assuming that the first 10 species belong
+# to group1 and the send ten belong to group 2
 b<-as.factor(rep(c("group1","group2"),each=10))
 #to apply ordinary crossvalidation (leave-one-out)
 vcrossv.da(a,b,fold=1,nsimulat=1,funct=lda)

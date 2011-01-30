@@ -47,15 +47,12 @@ library(vegan)
 	r.of.c<-cbind(age[-length(age)],r.of.c)
 	colnames(r.of.c)<-c("Age","Rate of change")
 	results<-list(r.of.c,res)
-	names(results)<-c("rate_of_change","resolution")
 	return(results)
 	}
 	else{
 	dist.vect<-cbind(age[-length(age)],dist.vect)
 	colnames(dist.vect)<-c("Age","Distance")	
-	results<-(list(dist.vect))
-	names(results)<-c("distances")
-	return(results)
+	return(dist.vect)
 	}
 }
 
