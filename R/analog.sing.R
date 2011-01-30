@@ -13,15 +13,17 @@ library(vegan)
 		as.matrix(vegdist(sscores,method=method,
 			binary=binary))[,base]->distance[,2]
 		}
-	if(method=="schord"){
-		for(i in 1:nrow(fossil)){
-			distance[i,2]<-sum(((fossil[i,
-				]^0.5)-(fossil[base,]^0.5))^2)
-			}
-		}
 	else{
-		as.matrix(vegdist(fossil,method=method,
-			binary=binary))[,base]->distance[,2]		}
+		if(method=="schord"){
+			for(i in 1:nrow(fossil)){
+				distance[i,2]<-sum(((fossil[i,
+					]^0.5)-(fossil[base,]^0.5))^2)
+				}
+		}
+		else{
+			as.matrix(vegdist(fossil,method=method,
+				binary=binary))[,base]->distance[,2]			}
+		}
 	plot(distance[,c(2,1)],ylim=c(max(age),min(age)),
 			type="l")
 }

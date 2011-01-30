@@ -12,7 +12,7 @@ Transfer functions and statistical operations for paleoecology
 \tabular{ll}{
 Package: \tab paleoMAS\cr
 Type: \tab Package\cr
-Version: \tab 2.0\cr
+Version: \tab 2.0-1\cr
 Date: \tab 2009-12-06\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
